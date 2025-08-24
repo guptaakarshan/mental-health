@@ -7,8 +7,6 @@ export async function POST(request: NextRequest) {
     // Generate a session token for the user
     const sessionToken = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 
-    // In a real implementation, you would store this in your database
-    // For now, we'll just return the session token
     console.log("[v0] Survey submitted:", { responses, score, riskLevel, sessionToken })
 
     return NextResponse.json({

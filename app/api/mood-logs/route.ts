@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// Mock storage for mood logs (in production, use your database)
 const moodLogs = new Map<string, any[]>()
 
 export async function GET(request: NextRequest) {
@@ -15,7 +14,6 @@ export async function GET(request: NextRequest) {
 
     let userMoodLogs = moodLogs.get(sessionToken) || []
 
-    // Filter by start date if provided
     if (startDate) {
       const filterDate = new Date(startDate)
       userMoodLogs = userMoodLogs.filter((log) => new Date(log.created_at) >= filterDate)

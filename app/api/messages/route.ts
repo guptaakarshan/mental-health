@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// Mock storage for messages (in production, use your database)
+
 const messages = new Map<string, any[]>()
 
 export async function GET(request: NextRequest) {
