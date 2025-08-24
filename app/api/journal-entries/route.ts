@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// Mock storage for journal entries (in production, use your database)
+
 const journalEntries = new Map<string, any[]>()
 
 export async function GET(request: NextRequest) {
