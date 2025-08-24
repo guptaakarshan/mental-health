@@ -41,7 +41,7 @@ export function DataManagement() {
       setSessionToken(token)
       loadDataStats(token)
     } else {
-      // Generate a new session token if none exists
+    
       const newToken = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
       localStorage.setItem("sessionToken", newToken)
       setSessionToken(newToken)
@@ -83,7 +83,7 @@ export function DataManagement() {
   const updateProfile = async () => {
     setIsLoading(true)
     try {
-      // Store display name in localStorage for session-based system
+      
       localStorage.setItem("displayName", displayName.trim())
     } catch (error) {
       console.error("Error updating profile:", error)
@@ -97,7 +97,7 @@ export function DataManagement() {
 
     setIsExporting(true)
     try {
-      // Fetch all session data
+  
       const [moodResponse, journalResponse, sessionsResponse, messagesResponse] = await Promise.all([
         fetch(`/api/mood-logs?sessionToken=${sessionToken}`),
         fetch(`/api/journal-entries?sessionToken=${sessionToken}`),
@@ -123,7 +123,6 @@ export function DataManagement() {
         statistics: dataStats,
       }
 
-      // Create and download JSON file
       const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" })
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
